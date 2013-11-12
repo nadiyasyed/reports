@@ -1,0 +1,319 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Report - List of Accounts</title>
+        <style type="text/css">
+            @page {
+                size: {{ pagesize|default:'legal landscape' }};
+                margin: 1.5cm 1cm;
+                @frame header {
+                    -pdf-frame-content: headerContent;
+                    top: 1cm;
+                    margin-left: 1cm;
+                    margin-right: 1cm;
+                    height:5cm;
+                    text-indent: inherit;
+
+                }
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0.5cm;
+                    margin-left: 1cm;
+                    margin-right: 1cm;
+                    height: 3cm;
+                }     
+            }
+            #report_table
+            {
+                text-align: center;
+                line-height:80px;
+                font: oblique 20px verdana; 
+                width: 500px;          
+
+
+            }
+            
+            #report_lists {
+                border: 1px solid #ccc;
+                line-height: 12px;
+                padding: 3px;
+            }
+            #report_head {
+                background-color: #ccc;
+                font-size: 12px;
+            }
+
+            #innerTab
+            {
+                text-align: justify;
+                font: bold 16px verdana; 
+                /*width: 300px; */
+                background-color: #ccc;
+                padding:3px;
+
+
+            }
+            #headerContent
+            {
+                font: bold 9px verdana;
+            }
+            #tabContents
+            {
+                font-size:20px;
+                margin-top:22px;
+                padding-top: 100px;
+                position: relative;
+            }
+            #container
+            {
+                position: absolute;
+                margin-top: 5px;
+                padding-top: 12px;   
+            }
+        </style>
+    </head>
+<body>
+<div id="header">
+        <div id="headerContent">
+            <table>
+            <tr><td >Project Survey Report</td></tr>
+            <tr><td >Essex Group</td></tr>
+            <tr><td><hr></td></tr>
+            </table>
+        </div>
+
+<div id="footerContent">
+            <table>
+            <tr><td><hr></td></tr>
+        <tr></tr>
+
+            <tr><td align="left"> {% now "M d, Y" %} </td></tr>
+            <tr><td> Page:<pdf:pagenumber /> </td></tr>
+            <tr><td align="right"> <img style="height:30px;width:250px;" src="jtor.png"> </td></tr>
+
+            </table>
+        </div>
+        </div>
+
+
+<!-- Page 1 -->
+
+        <table id="report_table" width="500px" align="center">
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>    <td style="font:bold 20px ArialBlack;">PROSPECTS SURVEY REPORT</td>    </tr>
+
+        <tr><td >Prepared For</td></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr><td ><img src="jt.png"></td></tr>
+        <tr></tr>
+        <tr></tr>
+
+        <tr><td >June 2013</td></tr>
+        
+        <tr><td >Aggregate</td></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr> <td><img style="margin-top:120px;height:100px;width:500px;" src="jtor.png"></td></tr>
+
+        </table>
+            <pdf:nextpage />
+
+<!-- ------------------------------------------------------------------------------------------- -->
+<!-- Page 2 -->
+
+
+    <div id="tabContents">
+        
+        <strong>Table Of Contents</strong>
+            <table id="innerTab">
+                <tr>    <td>Survey Synopsis</td> <td>.......................</td>   <td>4</td></tr>
+                <tr>    <td>Summary of Index Scores</td> <td>.......................</td>   <td>8</td></tr>
+                <tr>    <td>Property Index</td> <td>.......................</td>   <td>20</td></tr>
+                <tr>    <td>Leasing Index</td> <td>.......................</td>   <td>23</td></tr>
+                <tr>    <td>Physical Marketability Index</td> <td>.......................</td><td>25</td>
+                </tr>
+                <tr>    <td>Value Perception Index</td> <td>.......................</td>   <td>27</td></tr>
+                <tr>    <td>Rating of the Tour</td> <td>.......................</td>   <td>29</td></tr>
+                <tr>    <td>Comments/Suggestions</td> <td>.......................</td>   <td>31</td></tr>
+                
+            </table>
+
+
+    </div>
+            <pdf:nextpage />
+<!-- --------------------------------------------------------------------------------------------- -->
+
+
+<!-- Page 3 -->
+        
+    <div id="container">
+        <div id="logo">
+            <img id="sitelogo" src="http://appliedinformaticsinc.com/wp-content/uploads/2013/04/Applied_Informatics_Inc_TrialX_small.png">
+        </div>
+
+        <div id="lhs">
+        <h1>EMPLOYEE DETAILS</h1>
+            List of Employes
+        </div>
+
+        <table id="report_lists">
+            <thead id="report_head">
+                <tr>
+                    <th align="vmiddle">Name</th>
+                    <th align="vmiddle">Address</th>
+                    <th align="vmiddle">Name</th>
+                    <th align="vmiddle">Address</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for obj in object_lists %}
+                <tr>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.addr }}</td>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.addr }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>   <!--container-->
+            <pdf:nextpage />
+            <pdf:nextpage />
+
+        
+
+</body>
+</html>
+
+
+<!-- 
+<!DOCTYPE>
+<html>
+    <head>
+        <title>Report - List of Accounts</title>
+        <style type="text/css">
+            @page {
+                size: {{ pagesize|default:'legal landscape' }};
+                margin: 1.5cm 1cm;
+                @frame header {
+                    -pdf-frame-content: headerContent;
+                    top: 1cm;
+                    margin-left: 1cm;
+                    margin-right: 1cm;
+                    height: 0.5cm;
+                }
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0.5cm;
+                    margin-left: 1cm;
+                    margin-right: 1cm;
+                    height: 0.5cm;
+                }     
+            }
+            #report_table
+            {
+                text-align: center;
+                line-height:80px;
+                font: oblique 20px verdana; 
+                width: 500px;          
+
+
+            }
+            
+            #report_lists {
+                border: 1px solid #ccc;
+                line-height: 12px;
+                padding: 3px;
+            }
+            #report_head {
+                background-color: #ccc;
+                font-size: 12px;
+            }
+        </style>
+    </head>
+<body>
+
+        <table id="report_table" width="250px" align="center">
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr><td><h1>PROSPECTS SURVEY REPORT</h1></td></tr>
+
+        <tr><td >Prepared For</td></tr>
+        <tr></tr>
+        <tr></tr>
+        <tr><td ><img src="jt.png"></td></tr>
+        <tr></tr>
+        <tr></tr>
+
+        <tr><td >June 2013</td></tr>
+        
+        <tr><td >Aggregate</td></tr>
+
+        </table>
+            <pdf:nextpage />
+
+<div id="header">
+        <div id="headerContent">
+            <table><td align="right"><img style="height:12px;width:100px;" src="jtor.png"></td></tr></table>
+        </div>
+        <div id="logo">
+            <img id="sitelogo" src="http://appliedinformaticsinc.com/wp-content/uploads/2013/04/Applied_Informatics_Inc_TrialX_small.png">
+        </div>
+        </div>
+        <div id="lhs">
+        <h1>EMPLOYEE DETAILS</h1>
+            List of Employes
+        </div>
+
+        <table id="report_lists">
+            <thead id="report_head">
+                <tr>
+                    <th align="vmiddle">Name</th>
+                    <th align="vmiddle">Address</th>
+                    <th align="vmiddle">Name</th>
+                    <th align="vmiddle">Address</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% for obj in object_lists %}
+                <tr>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.addr }}</td>
+                    <td>{{ obj.name }}</td>
+                    <td>{{ obj.addr }}</td>
+                {% endfor %}
+            </tbody>
+        </table>
+            <pdf:nextpage />
+            <pdf:nextpage />
+
+        <div id="footer">
+        <div id="footerContent">
+            <table><tr><td align="left"> {% now "M d, Y" %} </td>
+            <td align="right"> <pdf:pagenumber /> </td></tr>
+            </table>
+        </div>
+        </div>
+
+
+
+</body>
+</html> -->

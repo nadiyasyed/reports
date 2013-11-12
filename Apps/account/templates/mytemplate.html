@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>My Title</title>
+        <style type="text/css">
+            @page {
+                size: A4;
+                margin: 1cm;
+                
+                @frame footer {
+                    -pdf-frame-content: footerContent;
+                    bottom: 0cm;
+                    margin-left: 9cm;
+                    margin-right: 9cm;
+                    height: 1cm;
+                }
+                
+            }
+            body{
+                background-color:cyan;
+
+            }
+            h1
+            {
+                    text-align: center;
+                    color: red;
+            }
+            h2
+            {
+                color: blue;
+            }
+            h3
+            {
+                color: green;
+            }
+            img
+            {
+                height: 100px;
+                width: 100px;
+                position: relative;
+                float: left;
+            }
+            a :hover
+            {
+                font-size: 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+                THIS IS A PDF TEMPLATE
+        
+        <img src="Actual Diagram.jpg">
+        
+        <h1 style="font-size:50px!important">nada</h1>
+        
+        <h2 >yada</h2>
+
+        
+        <a href="#"><h3>trada</h3></a>
+        
+        <h3> yaaaa </h3>
+        <h1><strong>yaaaa</strong></h1>
+        <h3><strong>yaaaa</strong></h3>
+            
+            <!-- <h1>{{name}}</h1> -->
+        </div>
+        <div id="footerContent">
+            {%block page_foot%}
+                Page <pdf:pagenumber>
+            {%endblock%}
+        </div>
+    </body>
+</html>
